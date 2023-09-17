@@ -49,17 +49,8 @@ void transform(PolynomialTerm pt[], char polynomial[])
         }
       }
 
-      int coef = atoi(tempCoef);
       int degree = atoi(tempDegree);
-
-      // Determine se o termo é positivo ou negativo
-      if (startIndex > 0 && polynomial[startIndex - 1] == '-')
-      {
-        coef = -coef;
-      }
-
-      // Atualize o termo no array
-      pt[degree].coefficient = coef;
+      pt[degree].coefficient = atoi(tempCoef);
       pt[degree].power = degree;
 
       startIndex = -1;
