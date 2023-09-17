@@ -26,32 +26,42 @@ void polynomialInput(void)
 
 int getHighestDegree(char polynomial[])
 {
-  char highestDegree[20];
+  int degree = 0;
+  int currentDegree = 0;
+  int length = strlen(polynomial);
+  bool foundX = false;
 
-  for (int i = 0; i < strlen(polynomial); i++)
+  for (int i = 0; i < length; i++)
   {
-    if (polynomial[i] != '^')
-      continue;
-
-    int degreeStartIndex = i + 1;
-    int degreeLastIndex = 0;
-
-    for (int j = degreeStartIndex; j < strlen(polynomial); j++)
+    if (polynomial[i] == 'x' || polynomial[i] == 'X')
     {
-      if (!isspace(polynomial[j]))
-        continue;
-
-      degreeLastIndex = j;
-      break;
+      foundX = true;
     }
+    else if (foundX && polynomial[i] == '^')
+    {
+      int j = i + 1;
 
-    strncpy(highestDegree, polynomial + degreeStartIndex, degreeLastIndex - degreeStartIndex);
-    highestDegree[degreeLastIndex - degreeStartIndex] = '\0';
+      while (j < length && isdigit(polynomial[j]))
+      {
+        currentDegree = currentDegree * 10 + (polynomial[j] - '0');
+        j++;
+      }
 
-    return atoi(highestDegree);
+      if (currentDegree > degree)
+      {
+        degree = currentDegree;
+      }
+      foundX = false;
+      currentDegree = 0;
+    }
   }
 
-  return 0;
+  if (degree == 0 && foundX)
+  {
+    return 1;
+  }
+
+  return degree;
 }
 
 int countSpaces(char str[])
