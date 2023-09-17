@@ -1,3 +1,6 @@
+#ifndef POLYNOMIAL_TERM_H
+#define POLYNOMIAL_TERM_H
+
 #include <stdio.h>
 
 typedef struct
@@ -6,25 +9,12 @@ typedef struct
     int power;
 } PolynomialTerm;
 
-void sumOne(PolynomialTerm *pt, PolynomialTerm *other)
-{
-    pt->coefficient = pt->coefficient + other->coefficient;
-    pt->power = pt->power + other->power;
-}
+void sumOne(PolynomialTerm *pt, PolynomialTerm *other);
 
-void subtractionOne(PolynomialTerm *pt, PolynomialTerm *other)
-{
-    pt->coefficient = pt->coefficient - other->coefficient;
-    pt->power = pt->power - other->power;
-}
+void subtractOne(PolynomialTerm *pt, PolynomialTerm *other);
 
-void multiplicationOne(PolynomialTerm *pt, PolynomialTerm other[])
-{
-    pt->coefficient = pt->coefficient - other->coefficient;
-    pt->power = pt->power - other->power;
-}
+void multiplyOne(PolynomialTerm *pt, PolynomialTerm *other);
 
-void print(PolynomialTerm *pt)
-{
-    printf("%dx^%d", pt->coefficient, pt->power);
-}
+void print(PolynomialTerm *pt);
+
+#endif // POLYNOMIAL_TERM_H
