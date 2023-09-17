@@ -82,49 +82,47 @@ int countSpaces(char str[])
 char *standardization(char polynomial[])
 {
   int currentPolynomialDegree = getHighestDegree(polynomial);
-    char *stdPolynomial = (char *)malloc((2 * MAX_SIZE + 1) * sizeof(char)); // +1 para o caractere nulo
+  char *stdPolynomial = (char *)malloc((2 * MAX_SIZE + 1) * sizeof(char));
 
-    if (stdPolynomial == NULL) {
-        fprintf(stderr, "Falha na alocação de memória\n");
-        exit(EXIT_FAILURE);
+  bool toSplit = true;
+  int startIndex = -1;
+
+  for (int i = 0; i <= strlen(polynomial); i++)
+  {
+    if (startIndex == -1)
+    {
+      startIndex = i;
     }
 
-    stdPolynomial[0] = '\0'; // Inicialize stdPolynomial como uma string vazia
-    bool toSplit = true;
-    int startIndex = -1;
-
-    for (int i = 0; i <= strlen(polynomial); i++) {
-        if (startIndex == -1) {
-            startIndex = i;
-        }
-
-        if (!isspace(polynomial[i]) && polynomial[i] != '\0') {
-            continue;
-        }
-
-        if (toSplit) {
-            char temp[20];
-            strncpy(temp, polynomial + startIndex, i - startIndex);
-            temp[i - startIndex] = '\0';
-            removeSpaces(temp);
-
-            int termDegree = getHighestDegree(temp);
-            int termCoefficient = atoi(temp) < 0 ? -atoi(temp) : atoi(temp);
-            int termCoefficientSignal = isdigit(temp[0]) ? '+' : temp[0];
-
-            char tempBuffer[20];
-            snprintf(tempBuffer, sizeof(tempBuffer), "%c%dx^%d", termCoefficientSignal, termCoefficient, termDegree);
-            strcat(stdPolynomial, tempBuffer);
-
-            toSplit = false;
-            startIndex = -1;
-            continue;
-        }
-
-        toSplit = true;
+    if (!isspace(polynomial[i]) && polynomial[i] != '\0')
+    {
+      continue;
     }
 
-    return stdPolynomial;
+    if (toSplit)
+    {
+      char temp[20];
+      strncpy(temp, polynomial + startIndex, i - startIndex);
+      temp[i - startIndex] = '\0';
+      removeSpaces(temp);
+
+      int termDegree = getHighestDegree(temp);
+      int termCoefficient = atoi(temp) < 0 ? -atoi(temp) : atoi(temp);
+      int termCoefficientSignal = isdigit(temp[0]) ? '+' : temp[0];
+
+      char tempBuffer[20];
+      snprintf(tempBuffer, sizeof(tempBuffer), "%c%dx^%d", termCoefficientSignal, termCoefficient, termDegree);
+      strcat(stdPolynomial, tempBuffer);
+
+      toSplit = false;
+      startIndex = -1;
+      continue;
+    }
+
+    toSplit = true;
+  }
+
+  return stdPolynomial;
 }
 
 void removeSpaces(char *str)

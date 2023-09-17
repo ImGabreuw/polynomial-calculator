@@ -3,7 +3,7 @@
 
 int main(int argc, char const *argv[])
 {
-    char *polynomial = standardization("4x^6 + 3x^5 - 6x^3 - 8x^2 + 3x + 4");
+    char *polynomial = standardization("-42x^6 + 6x^4 - 28x^2 + 3x + 124");
 
     int index = 0;
     while (polynomial[index] != '\0')
