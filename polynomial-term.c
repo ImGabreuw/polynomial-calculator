@@ -21,7 +21,7 @@ void multiplyOne(PolynomialTerm *pt, PolynomialTerm *other)
 
 void print(PolynomialTerm *pt)
 {
-    if (pt->coefficient > 0)
+    if (pt->coefficient >= 0)
     {
         printf("+%dx^%d", pt->coefficient, pt->power);
         return;

@@ -13,6 +13,8 @@ int main(int argc, char const *argv[])
         print(&pt[i]);
     }
 
+    printf("\n");
+
     return 0;
 }
 

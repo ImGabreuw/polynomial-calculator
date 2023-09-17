@@ -11,6 +11,12 @@ void transform(PolynomialTerm pt[], char polynomial[])
 {
   int startIndex = 0;
 
+  for (int i = 0; i < MAX_SIZE_TERM; i++)
+  {
+    pt[i].coefficient = 0;
+    pt[i].power = i;
+  }
+
   for (int i = 0; i <= strlen(polynomial); i++)
   {
     if (polynomial[i] == '+' || polynomial[i] == '-')
@@ -37,7 +43,6 @@ void transform(PolynomialTerm pt[], char polynomial[])
         if (polynomial[j] == '+' || polynomial[j] == '-' || polynomial[j] == '\0')
         {
           endIndex = j - 1;
-          printf("%d %d\n", startIndex, endIndex);
           strncpy(tempDegree, polynomial + startIndex, endIndex - startIndex + 1);
           tempDegree[endIndex - startIndex + 1] = '\0';
           break;
@@ -46,6 +51,16 @@ void transform(PolynomialTerm pt[], char polynomial[])
 
       int coef = atoi(tempCoef);
       int degree = atoi(tempDegree);
+
+      // Determine se o termo é positivo ou negativo
+      if (startIndex > 0 && polynomial[startIndex - 1] == '-')
+      {
+        coef = -coef;
+      }
+
+      // Atualize o termo no array
+      pt[degree].coefficient = coef;
+      pt[degree].power = degree;
 
       startIndex = -1;
     }
