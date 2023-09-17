@@ -81,53 +81,50 @@ int countSpaces(char str[])
 
 char *standardization(char polynomial[])
 {
-  int index = 0;
-  char *stdPolynomial = (char *)malloc(2 * MAX_SIZE * sizeof(char));
   int currentPolynomialDegree = getHighestDegree(polynomial);
+    char *stdPolynomial = (char *)malloc((2 * MAX_SIZE + 1) * sizeof(char)); // +1 para o caractere nulo
 
-  bool toSplit = true;
-  int startIndex = -1;
-
-  for (int i = 0; i <= strlen(polynomial); i++)
-  {
-    if (startIndex == -1)
-    {
-      startIndex = i;
+    if (stdPolynomial == NULL) {
+        fprintf(stderr, "Falha na alocação de memória\n");
+        exit(EXIT_FAILURE);
     }
 
-    if (!isspace(polynomial[i]) && polynomial[i] != '\0')
-      continue;
+    stdPolynomial[0] = '\0'; // Inicialize stdPolynomial como uma string vazia
+    bool toSplit = true;
+    int startIndex = -1;
 
-    if (toSplit)
-    {
-      char temp[20];
-      strncpy(temp, polynomial + startIndex, i - startIndex);
-      temp[i - startIndex] = '\0';
-      removeSpaces(temp);
-
-      if (getHighestDegree(temp) != currentPolynomialDegree)
-      {
-        for (int j = getHighestDegree(temp) + 1; j <= currentPolynomialDegree; j++)
-        {
-          char tempBuffer[20];
-          snprintf(tempBuffer, sizeof(tempBuffer), "+0x^%d", j);
-          strcat(stdPolynomial, tempBuffer);
-          --currentPolynomialDegree;
+    for (int i = 0; i <= strlen(polynomial); i++) {
+        if (startIndex == -1) {
+            startIndex = i;
         }
-      }
 
-      strcat(stdPolynomial, temp);
-      --currentPolynomialDegree;
+        if (!isspace(polynomial[i]) && polynomial[i] != '\0') {
+            continue;
+        }
 
-      toSplit = false;
-      startIndex = -1;
-      continue;
+        if (toSplit) {
+            char temp[20];
+            strncpy(temp, polynomial + startIndex, i - startIndex);
+            temp[i - startIndex] = '\0';
+            removeSpaces(temp);
+
+            int termDegree = getHighestDegree(temp);
+            int termCoefficient = atoi(temp) < 0 ? -atoi(temp) : atoi(temp);
+            int termCoefficientSignal = isdigit(temp[0]) ? '+' : temp[0];
+
+            char tempBuffer[20];
+            snprintf(tempBuffer, sizeof(tempBuffer), "%c%dx^%d", termCoefficientSignal, termCoefficient, termDegree);
+            strcat(stdPolynomial, tempBuffer);
+
+            toSplit = false;
+            startIndex = -1;
+            continue;
+        }
+
+        toSplit = true;
     }
 
-    toSplit = true;
-  }
-
-  return stdPolynomial;
+    return stdPolynomial;
 }
 
 void removeSpaces(char *str)
