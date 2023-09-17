@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "utils.h"
+#include "polynomial.h"
 
 int main(int argc, char const *argv[])
 {
@@ -13,6 +14,8 @@ int main(int argc, char const *argv[])
     }
     
     printf("\n");
+
+    transform(polynomial, NULL);
 
     return 0;
 }
