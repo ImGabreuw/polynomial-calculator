@@ -5,7 +5,11 @@
 
 int solveOne(PolynomialTerm *pt, int x)
 {
-    return (int) pow(pt->coefficient * x, pt->power);
+    if (pt->coefficient == 0) {
+        return 0;
+    }
+
+    return pt->coefficient * pow(x, pt->power);
 }
 
 void sumOne(PolynomialTerm *pt, PolynomialTerm *other)

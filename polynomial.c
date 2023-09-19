@@ -5,13 +5,11 @@
 #include "polynomial-term.h"
 #include "polynomial.h"
 
-#define MAX_SIZE_TERM 10
-
 void transform(PolynomialTerm pt[], char polynomial[])
 {
   int startIndex = 0;
 
-  for (int i = 0; i < MAX_SIZE_TERM; i++)
+  for (int i = 0; i < MAX_DEGREE; i++)
   {
     pt[i].coefficient = 0;
     pt[i].power = i;
@@ -56,4 +54,16 @@ void transform(PolynomialTerm pt[], char polynomial[])
       startIndex = -1;
     }
   }
+}
+
+int solve(PolynomialTerm pt[], int x)
+{
+  int result = 0;
+
+  for (int i = 0; i < MAX_DEGREE; i++)
+  {
+    result += solveOne(&pt[i], x);
+  }
+
+  return result;
 }
