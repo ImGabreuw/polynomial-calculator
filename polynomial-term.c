@@ -3,7 +3,7 @@
 
 #include "polynomial-term.h"
 
-int resolveOne(PolynomialTerm *pt, int x)
+int solveOne(PolynomialTerm *pt, int x)
 {
     return (int) pow(pt->coefficient * x, pt->power);
 }
