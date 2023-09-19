@@ -12,8 +12,6 @@ void polynomialInput(void);
 
 int getHighestDegree(char polynomial[]);
 
-int countSpaces(char str[]);
-
 char *standardization(char polynomial[]);
 
 void removeSpaces(char *str);
@@ -62,21 +60,6 @@ int getHighestDegree(char polynomial[])
   }
 
   return degree;
-}
-
-int countSpaces(char str[])
-{
-  int count = 0;
-
-  for (int i = 0; i < strlen(str); i++)
-  {
-    if (isspace(str[i]))
-    {
-      ++count;
-    }
-  }
-
-  return count;
 }
 
 char *standardization(char polynomial[])
