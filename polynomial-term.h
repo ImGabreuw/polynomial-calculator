@@ -9,6 +9,8 @@ typedef struct
     int power;
 } PolynomialTerm;
 
+int resolveOne(PolynomialTerm *pt, int x);
+
 void sumOne(PolynomialTerm *pt, PolynomialTerm *other);
 
 void subtractOne(PolynomialTerm *pt, PolynomialTerm *other);

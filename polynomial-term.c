@@ -1,5 +1,12 @@
 #include <stdio.h>
+#include <math.h>
+
 #include "polynomial-term.h"
+
+int resolveOne(PolynomialTerm *pt, int x)
+{
+    return (int) pow(pt->coefficient * x, pt->power);
+}
 
 void sumOne(PolynomialTerm *pt, PolynomialTerm *other)
 {
