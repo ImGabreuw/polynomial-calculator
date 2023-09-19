@@ -9,6 +9,8 @@
     "initializer_list": "c",
     "utility": "c",
     "utils.h": "c",
-    "polynomial-term.h": "c"
+    "polynomial-term.h": "c",
+    "polynomial.h": "c",
+    "stdio.h": "c"
   }
 }

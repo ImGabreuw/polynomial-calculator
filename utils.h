@@ -66,6 +66,7 @@ char *standardization(char polynomial[])
 {
   int currentPolynomialDegree = getHighestDegree(polynomial);
   char *stdPolynomial = (char *)malloc((2 * MAX_SIZE + 1) * sizeof(char));
+  stdPolynomial[0] = '\0';
 
   bool toSplit = true;
   int startIndex = -1;
@@ -90,8 +91,15 @@ char *standardization(char polynomial[])
       removeSpaces(temp);
 
       int termDegree = getHighestDegree(temp);
-      int termCoefficient = atoi(temp) < 0 ? -atoi(temp) : atoi(temp);
-      int termCoefficientSignal = isdigit(temp[0]) ? '+' : temp[0];
+      int termCoefficient = 1;
+      char termCoefficientSignal = '+';
+
+      // Verifica se há um valor numérico válido para o coeficiente
+      if (isdigit(temp[0]) || (temp[0] == '+' && isdigit(temp[1])) || (temp[0] == '-' && isdigit(temp[1])))
+      {
+        termCoefficient = abs(atoi(temp));
+        termCoefficientSignal = (temp[0] == '-') ? '-' : '+';
+      }
 
       char tempBuffer[20];
       snprintf(tempBuffer, sizeof(tempBuffer), "%c%dx^%d", termCoefficientSignal, termCoefficient, termDegree);
