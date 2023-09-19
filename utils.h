@@ -4,15 +4,20 @@
 #include <ctype.h>
 #include <stdbool.h>
 
+// ANSI escape code
+#define GREEN_COLOR "\033[0;32m"
+#define RED_COLOR "\033[0;31m"
+#define DEFAULT_COLOR "\033[0m"
+
 #define MAX_SIZE 1000
 
 void removeSpaces(char *str);
 
 void polynomialInput(void);
 
-int getHighestDegree(char polynomial[]);
+int getHighestDegree(const char polynomial[]);
 
-char *standardization(char polynomial[]);
+char *standardization(const char polynomial[]);
 
 void removeSpaces(char *str);
 
@@ -22,7 +27,7 @@ void polynomialInput(void)
   fgets(polynomial, MAX_SIZE, stdin);
 }
 
-int getHighestDegree(char polynomial[])
+int getHighestDegree(const char polynomial[])
 {
   int degree = 0;
   int currentDegree = 0;
@@ -62,7 +67,7 @@ int getHighestDegree(char polynomial[])
   return degree;
 }
 
-char *standardization(char polynomial[])
+char *standardization(const char polynomial[])
 {
   int currentPolynomialDegree = getHighestDegree(polynomial);
   char *stdPolynomial = (char *)malloc((2 * MAX_SIZE + 1) * sizeof(char));

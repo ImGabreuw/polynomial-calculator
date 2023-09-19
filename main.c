@@ -2,16 +2,40 @@
 #include "utils.h"
 #include "polynomial.h"
 
+int cli(int argc, char const *argv[]);
+
 int main(int argc, char const *argv[])
 {
-    char *polynomial = standardization("-2x^2 + 2x");
+    if (argc > 0)
+    {
+        cli(argc, argv);
+    }
 
-    printf("%s\n", polynomial);
+    return 0;
+}
 
-    PolynomialTerm pt[MAX_DEGREE];
-    transform(pt, polynomial);
+int cli(int argc, char const *argv[])
+{
+    int option = atoi(argv[1]);
 
-    printf("%d\n", solve(pt, 2));
+    if (option == 1)
+    {
+        int expectedResult = atoi(argv[2]);
+        char *polynomial = standardization(argv[3]);
+
+        PolynomialTerm pt[MAX_DEGREE];
+        transform(pt, polynomial);
+        int result = solve(pt, 2);
+
+        if (expectedResult != result)
+        {
+            printf("%sTeste não passou. Valor esperado era de %d, mas foi obtido %d.%s\n", RED_COLOR, expectedResult, result, DEFAULT_COLOR);
+            return 1;
+        }
+
+        printf("%sTeste passou. Valor esperado era de %d e foi obtido %d.%s\n", GREEN_COLOR, expectedResult, result, DEFAULT_COLOR);
+        return 0;
+    }
 
     return 0;
 }
