@@ -5,7 +5,8 @@
 
 int solveOne(PolynomialTerm *pt, int x)
 {
-    if (pt->coefficient == 0) {
+    if (pt->coefficient == 0)
+    {
         return 0;
     }
 
@@ -14,8 +15,10 @@ int solveOne(PolynomialTerm *pt, int x)
 
 void sumOne(PolynomialTerm *pt, PolynomialTerm *other)
 {
-    pt->coefficient = pt->coefficient + other->coefficient;
-    pt->power = pt->power + other->power;
+    if (pt->power == other->power)
+    {
+        pt->coefficient = pt->coefficient + other->coefficient;
+    }
 }
 
 void subtractOne(PolynomialTerm *pt, PolynomialTerm *other)

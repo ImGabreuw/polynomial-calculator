@@ -67,3 +67,34 @@ int solve(PolynomialTerm pt[], int x)
 
   return result;
 }
+
+void sum(PolynomialTerm pt1[], PolynomialTerm pt2[])
+{
+  for (int i = 0; i < MAX_DEGREE; i++)
+  {
+    sumOne(&pt1[i], &pt2[i]);
+  }
+}
+
+char *format(PolynomialTerm pt[])
+{
+  char *formatted = (char *)malloc(MAX_SIZE + 1);
+
+  for (int i = MAX_DEGREE - 1; i >= 0 ; i--)
+  {
+    int coef = pt[i].coefficient;
+    int power = pt[i].power;
+
+    if (coef == 0) continue;
+
+    char signal = coef >= 0 ? '+' : '-';
+
+    char temp[20];
+    temp[19] = '\0';
+    snprintf(temp, sizeof(temp), "%c%dx^%d", signal, coef, power);
+    strcat(formatted, temp);
+  }
+
+  formatted[MAX_SIZE] = '\0';
+  return formatted;
+}
