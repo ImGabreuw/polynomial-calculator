@@ -15,7 +15,7 @@ void sumOne(PolynomialTerm *pt, PolynomialTerm *other);
 
 void subtractOne(PolynomialTerm *pt, PolynomialTerm *other);
 
-void multiplyOne(PolynomialTerm *pt, PolynomialTerm *other);
+PolynomialTerm multiplyOne(PolynomialTerm *pt, PolynomialTerm *other);
 
 void print(PolynomialTerm *pt);
 

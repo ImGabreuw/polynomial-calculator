@@ -29,10 +29,14 @@ void subtractOne(PolynomialTerm *pt, PolynomialTerm *other)
     }
 }
 
-void multiplyOne(PolynomialTerm *pt, PolynomialTerm *other)
+PolynomialTerm multiplyOne(PolynomialTerm *pt, PolynomialTerm *other)
 {
-    pt->coefficient = pt->coefficient * other->coefficient;
-    pt->power = pt->power + other->power;
+    PolynomialTerm term;
+
+    term.coefficient = pt->coefficient * other->coefficient;
+    term.power = pt->power + other->power;
+
+    return term;
 }
 
 void print(PolynomialTerm *pt)

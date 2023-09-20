@@ -84,6 +84,31 @@ void subtraction(PolynomialTerm pt1[], PolynomialTerm pt2[])
   }
 }
 
+void multiplication(PolynomialTerm pt1[], PolynomialTerm pt2[])
+{
+  PolynomialTerm result[MAX_DEGREE];
+
+  for (int i = 0; i < MAX_DEGREE; i++)
+  {
+    result[i].coefficient = 0;
+    result[i].power = i;
+  }
+
+  for (int i = 0; i < MAX_DEGREE; i++)
+  {
+    for (int j = 0; j < MAX_DEGREE; j++)
+    {
+      PolynomialTerm term = multiplyOne(&pt1[i], &pt2[j]);
+      sumOne(&result[term.power], &term);
+    }
+  }
+
+  for (int i = 0; i < MAX_DEGREE; i++)
+  {
+    pt1[i] = result[i];
+  }
+}
+
 char *format(PolynomialTerm pt[])
 {
   char *formatted = (char *)malloc(MAX_SIZE + 1);

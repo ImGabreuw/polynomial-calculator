@@ -14,6 +14,8 @@ void sum(PolynomialTerm pt1[], PolynomialTerm pt2[]);
 
 void subtraction(PolynomialTerm pt1[], PolynomialTerm pt2[]);
 
+void multiplication(PolynomialTerm pt1[], PolynomialTerm pt2[]);
+
 char *format(PolynomialTerm pt[]);
 
 #endif // POLYNOMIAL_H

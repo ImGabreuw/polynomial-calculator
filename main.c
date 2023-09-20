@@ -54,10 +54,15 @@ int cli(int argc, char const *argv[])
     {
         sum(pt1, pt2);
     }
-    
+
     if (option == 3)
     {
         subtraction(pt1, pt2);
+    }
+
+    if (option == 4)
+    {
+        multiplication(pt1, pt2);
     }
 
     char *formatted = format(pt1);
