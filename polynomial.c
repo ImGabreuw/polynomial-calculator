@@ -91,7 +91,7 @@ char *format(PolynomialTerm pt[])
 
     char temp[20];
     temp[19] = '\0';
-    snprintf(temp, sizeof(temp), "%c%dx^%d", signal, coef, power);
+    snprintf(temp, sizeof(temp), "%c%dx^%d", signal, abs(coef), power);
     strcat(formatted, temp);
   }
 

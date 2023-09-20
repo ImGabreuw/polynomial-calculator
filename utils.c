@@ -81,7 +81,7 @@ char *standardization(const char polynomial[])
       // Verifica se há um valor numérico válido para o coeficiente
       if (isdigit(temp[0]) || isdigit(temp[1]))
       {
-        termCoefficient = atoi(temp);
+        termCoefficient = abs(atoi(temp));
       }
 
       char tempBuffer[20];
