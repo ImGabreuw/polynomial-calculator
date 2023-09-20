@@ -21,11 +21,11 @@ int cli(int argc, char const *argv[])
     if (option == 1)
     {
         int expectedResult = atoi(argv[2]);
-        char *polynomial = standardization(argv[3]);
-
+        int x = atoi(argv[3]);
+        char *polynomial = standardization(argv[4]);
         PolynomialTerm pt[MAX_DEGREE];
         transform(pt, polynomial);
-        int result = solve(pt, 2);
+        int result = solve(pt, x);
 
         if (expectedResult != result)
         {

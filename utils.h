@@ -99,10 +99,15 @@ char *standardization(const char polynomial[])
       int termCoefficient = 1;
       char termCoefficientSignal = '+';
 
+      if ((temp[0] == '-' || temp[0] == '+') && temp[1] == 'x')
+      {
+        termCoefficientSignal = (temp[0] == '-') ? '-' : '+';
+      }
+
       // Verifica se há um valor numérico válido para o coeficiente
       if (isdigit(temp[0]) || (temp[0] == '+' && isdigit(temp[1])) || (temp[0] == '-' && isdigit(temp[1])))
       {
-        termCoefficient = abs(atoi(temp));
+        termCoefficient = atoi(temp);
         termCoefficientSignal = (temp[0] == '-') ? '-' : '+';
       }
 

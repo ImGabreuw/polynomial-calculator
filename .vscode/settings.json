@@ -12,6 +12,7 @@
     "polynomial-term.h": "c",
     "polynomial.h": "c",
     "stdio.h": "c",
-    "stdbool.h": "c"
+    "stdbool.h": "c",
+    "random": "c"
   }
 }
