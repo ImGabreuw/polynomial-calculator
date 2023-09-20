@@ -23,8 +23,10 @@ void sumOne(PolynomialTerm *pt, PolynomialTerm *other)
 
 void subtractOne(PolynomialTerm *pt, PolynomialTerm *other)
 {
-    pt->coefficient = pt->coefficient - other->coefficient;
-    pt->power = pt->power - other->power;
+    if (pt->power == other->power)
+    {
+        pt->coefficient = pt->coefficient - other->coefficient;
+    }
 }
 
 void multiplyOne(PolynomialTerm *pt, PolynomialTerm *other)

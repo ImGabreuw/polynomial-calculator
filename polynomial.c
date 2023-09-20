@@ -76,16 +76,25 @@ void sum(PolynomialTerm pt1[], PolynomialTerm pt2[])
   }
 }
 
+void subtraction(PolynomialTerm pt1[], PolynomialTerm pt2[])
+{
+  for (int i = 0; i < MAX_DEGREE; i++)
+  {
+    subtractOne(&pt1[i], &pt2[i]);
+  }
+}
+
 char *format(PolynomialTerm pt[])
 {
   char *formatted = (char *)malloc(MAX_SIZE + 1);
 
-  for (int i = MAX_DEGREE - 1; i >= 0 ; i--)
+  for (int i = MAX_DEGREE - 1; i >= 0; i--)
   {
     int coef = pt[i].coefficient;
     int power = pt[i].power;
 
-    if (coef == 0) continue;
+    if (coef == 0 && power != 0)
+      continue;
 
     char signal = coef >= 0 ? '+' : '-';
 
