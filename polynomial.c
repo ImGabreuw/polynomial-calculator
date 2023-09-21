@@ -15,7 +15,7 @@ int getHighestDegree(const char polynomial[])
     {
       foundX = true;
     }
-    
+
     if (foundX && polynomial[i] == '^')
     {
       int j = i + 1;
@@ -109,7 +109,7 @@ void transform(PolynomialTerm pt[], char polynomial[])
       startIndex = i;
     }
 
-    if (polynomial[i] == 'x')
+    if (polynomial[i] == 'x' || polynomial[i] == 'X')
     {
       int endIndex = i - 1;
       char tempCoefficient[20];
@@ -194,13 +194,14 @@ void multiplication(PolynomialTerm pt1[], PolynomialTerm pt2[])
 char *format(PolynomialTerm pt[])
 {
   char *formatted = (char *)malloc(MAX_SIZE + 1);
+  int countCoefficient0 = 0;
 
   for (int i = MAX_DEGREE - 1; i >= 0; i--)
   {
     int coefficient = pt[i].coefficient;
     int power = pt[i].power;
 
-    if (coefficient == 0 && power != 0)
+    if (coefficient == 0 && ++countCoefficient0 != MAX_DEGREE)
       continue;
 
     char temp[20];
@@ -211,4 +212,20 @@ char *format(PolynomialTerm pt[])
 
   formatted[MAX_SIZE] = '\0';
   return formatted;
+}
+
+void print(PolynomialTerm pt[])
+{
+  int countCoefficient0 = 0;
+
+
+  for (int i = MAX_DEGREE - 1; i >= 0; i--)
+  {
+    int coefficient = pt[i].coefficient;
+
+    if (coefficient == 0 && ++countCoefficient0 != MAX_DEGREE)
+      continue;
+
+    printOne(&pt[i]);
+  }
 }

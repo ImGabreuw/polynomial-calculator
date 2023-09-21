@@ -12,8 +12,6 @@
 #define RED_COLOR "\033[0;31m"
 #define DEFAULT_COLOR "\033[0m"
 
-#define MAX_SIZE 1000
-
 void removeSpaces(char *str);
 
 void removeSpaces(char *str);

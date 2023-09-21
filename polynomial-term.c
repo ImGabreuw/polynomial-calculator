@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <math.h>
-
 #include "polynomial-term.h"
 
 int solveOne(PolynomialTerm *pt, int x)
@@ -39,13 +36,25 @@ PolynomialTerm multiplyOne(PolynomialTerm *pt, PolynomialTerm *other)
     return term;
 }
 
-void print(PolynomialTerm *pt)
+void printOne(PolynomialTerm *pt)
 {
-    if (pt->coefficient >= 0)
+    if (pt->power == 0)
     {
-        printf("+%dx^%d", pt->coefficient, pt->power);
+        if (pt->coefficient >= 0)
+        {
+            printf(" + %dx", pt->coefficient);
+            return;
+        }
+
+        printf(" - %dx", abs(pt->coefficient));
         return;
     }
 
-    printf("%dx^%d", pt->coefficient, pt->power);
+    if (pt->coefficient >= 0)
+    {
+        printf(" + %dx^%d", pt->coefficient, pt->power);
+        return;
+    }
+
+    printf(" - %dx^%d", abs(pt->coefficient), pt->power);
 }

@@ -14,6 +14,11 @@
     "stdio.h": "c",
     "stdbool.h": "c",
     "random": "c",
-    "ctype.h": "c"
+    "ctype.h": "c",
+    "cli.h": "c",
+    "system_error": "c",
+    "cli-utils.h": "c",
+    "stdlib.h": "c",
+    "numeric": "c"
   }
 }

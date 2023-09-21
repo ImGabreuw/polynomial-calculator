@@ -2,6 +2,8 @@
 #define POLYNOMIAL_TERM_H
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 typedef struct
 {
@@ -17,6 +19,6 @@ void subtractOne(PolynomialTerm *pt, PolynomialTerm *other);
 
 PolynomialTerm multiplyOne(PolynomialTerm *pt, PolynomialTerm *other);
 
-void print(PolynomialTerm *pt);
+void printOne(PolynomialTerm *pt);
 
 #endif // POLYNOMIAL_TERM_H

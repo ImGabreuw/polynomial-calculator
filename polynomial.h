@@ -6,7 +6,7 @@
 #include <ctype.h>
 #include "polynomial-term.h"
 
-#define MAX_SIZE 1000
+#define MAX_SIZE 100
 #define MAX_DEGREE 10
 
 int getHighestDegree(const char polynomial[]);
@@ -24,5 +24,7 @@ void subtraction(PolynomialTerm pt1[], PolynomialTerm pt2[]);
 void multiplication(PolynomialTerm pt1[], PolynomialTerm pt2[]);
 
 char *format(PolynomialTerm pt[]);
+
+void print(PolynomialTerm pt[]);
 
 #endif // POLYNOMIAL_H
