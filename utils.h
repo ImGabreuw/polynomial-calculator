@@ -16,12 +16,6 @@
 
 void removeSpaces(char *str);
 
-void polynomialInput(void);
-
-int getHighestDegree(const char polynomial[]);
-
-char *standardization(const char polynomial[]);
-
 void removeSpaces(char *str);
 
 bool isEquals(char str1[], char str2[]);

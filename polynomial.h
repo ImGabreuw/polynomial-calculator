@@ -1,10 +1,17 @@
 #ifndef POLYNOMIAL_H
 #define POLYNOMIAL_H
 
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include "polynomial-term.h"
 
 #define MAX_SIZE 1000
 #define MAX_DEGREE 10
+
+int getHighestDegree(const char polynomial[]);
+
+char *standardization(const char polynomial[]);
 
 void transform(PolynomialTerm pt[], char polynomial[]);
 
