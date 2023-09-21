@@ -29,3 +29,5 @@ bool isEquals(char str1[], char str2[]);
 void init(PolynomialTerm polynomial[], int size);
 
 bool isSignal(char c);
+
+bool isNumber(const char str[]);

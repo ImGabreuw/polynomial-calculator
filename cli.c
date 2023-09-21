@@ -2,8 +2,10 @@
 
 int cli(int argc, char const *argv[])
 {
-    if (!isValidArgs(argc, argv)) {
+    if (!isValidArgs(argc, argv))
+    {
         help(argv[0]);
+        return 0;
     }
 
     int option = atoi(argv[1]);
@@ -84,11 +86,14 @@ void help(const char programName[])
 
 bool isValidArgs(int argc, char const *argv[])
 {
-    if (argc == 5)
-        return true;
+    if (argc != 5)
+        return false;
 
-    if (isdigit(argv[1]) && atoi(argv[1]) > 0 && atoi(argv[1]) <= 4)
-        return true;
+    if (!isNumber(argv[1]))
+        return false;
 
-    return false;
+    if (atoi(argv[1]) <= 0 || atoi(argv[1]) > 4)
+        return false;
+
+    return true;
 }
