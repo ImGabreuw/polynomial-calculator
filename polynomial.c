@@ -4,20 +4,16 @@
 
 #include "polynomial-term.h"
 #include "polynomial.h"
+#include "utils.h"
 
 void transform(PolynomialTerm pt[], char polynomial[])
 {
+  init(pt, MAX_DEGREE);
   int startIndex = 0;
-
-  for (int i = 0; i < MAX_DEGREE; i++)
-  {
-    pt[i].coefficient = 0;
-    pt[i].power = i;
-  }
 
   for (int i = 0; i <= strlen(polynomial); i++)
   {
-    if (polynomial[i] == '+' || polynomial[i] == '-')
+    if (isSignal(polynomial[i]))
     {
       startIndex = i;
     }
@@ -25,10 +21,10 @@ void transform(PolynomialTerm pt[], char polynomial[])
     if (polynomial[i] == 'x')
     {
       int endIndex = i - 1;
-      char tempCoef[20];
+      char tempCoefficient[20];
       char tempDegree[20];
-      strncpy(tempCoef, polynomial + startIndex, endIndex - startIndex + 1);
-      tempCoef[endIndex - startIndex + 1] = '\0';
+      strncpy(tempCoefficient, polynomial + startIndex, endIndex - startIndex + 1);
+      tempCoefficient[endIndex - startIndex + 1] = '\0';
 
       for (int j = i + 1; j <= strlen(polynomial); j++)
       {
@@ -38,7 +34,7 @@ void transform(PolynomialTerm pt[], char polynomial[])
           continue;
         }
 
-        if (polynomial[j] == '+' || polynomial[j] == '-' || polynomial[j] == '\0')
+        if (isSignal(polynomial[j]) || polynomial[j] == '\0')
         {
           endIndex = j - 1;
           strncpy(tempDegree, polynomial + startIndex, endIndex - startIndex + 1);
@@ -48,7 +44,7 @@ void transform(PolynomialTerm pt[], char polynomial[])
       }
 
       int degree = atoi(tempDegree);
-      pt[degree].coefficient = atoi(tempCoef);
+      pt[degree].coefficient = atoi(tempCoefficient);
       pt[degree].power = degree;
 
       startIndex = -1;
@@ -87,12 +83,7 @@ void subtraction(PolynomialTerm pt1[], PolynomialTerm pt2[])
 void multiplication(PolynomialTerm pt1[], PolynomialTerm pt2[])
 {
   PolynomialTerm result[MAX_DEGREE];
-
-  for (int i = 0; i < MAX_DEGREE; i++)
-  {
-    result[i].coefficient = 0;
-    result[i].power = i;
-  }
+  init(result, MAX_DEGREE);
 
   for (int i = 0; i < MAX_DEGREE; i++)
   {
@@ -115,17 +106,15 @@ char *format(PolynomialTerm pt[])
 
   for (int i = MAX_DEGREE - 1; i >= 0; i--)
   {
-    int coef = pt[i].coefficient;
+    int coefficient = pt[i].coefficient;
     int power = pt[i].power;
 
-    if (coef == 0 && power != 0)
+    if (coefficient == 0 && power != 0)
       continue;
-
-    char signal = coef >= 0 ? '+' : '-';
 
     char temp[20];
     temp[19] = '\0';
-    snprintf(temp, sizeof(temp), "%c%dx^%d", signal, abs(coef), power);
+    snprintf(temp, sizeof(temp), "%+dx^%d", coefficient, power);
     strcat(formatted, temp);
   }
 
