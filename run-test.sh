@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc -o main main.c polynomial-term.c polynomial.c utils.c -lm
+gcc -o main $(find . -name "*.c") -lm
 
 echo "---------------------------- Resolver polinômio ----------------------------"
 ./main 1 11 2 "2x^2 + x + 1"
