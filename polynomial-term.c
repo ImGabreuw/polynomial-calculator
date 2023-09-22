@@ -42,6 +42,18 @@ void printOne(PolynomialTerm *pt)
     {
         if (pt->coefficient >= 0)
         {
+            printf(" + %d", pt->coefficient);
+            return;
+        }
+
+        printf(" - %d", abs(pt->coefficient));
+        return;
+    }
+
+    if (pt->power == 1)
+    {
+        if (pt->coefficient >= 0)
+        {
             printf(" + %dx", pt->coefficient);
             return;
         }
