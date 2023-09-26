@@ -12,11 +12,7 @@
 
 void removeSpaces(char *str);
 
-void removeSpaces(char *str);
-
 bool isEquals(char str1[], char str2[]);
-
-void init(PolynomialTerm polynomial[], int size);
 
 bool isSignal(char c);
 

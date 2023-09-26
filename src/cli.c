@@ -5,9 +5,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#include "../include/cli-utils.h"
-#include "../include/polynomial.h"
 #include "../include/utils.h"
+#include "../include/cli-utils.h"
+#include "../include/polynomial-utils.h"
+#include "../include/polynomial.h"
 
 void cli(int argc, char const *argv[])
 {

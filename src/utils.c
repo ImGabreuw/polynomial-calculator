@@ -37,15 +37,6 @@ bool isEquals(char str1[], char str2[])
   return true;
 }
 
-void init(PolynomialTerm polynomial[], int size)
-{
-  for (int i = 0; i < size; i++)
-  {
-    polynomial[i].coefficient = 0;
-    polynomial[i].power = i;
-  }
-}
-
 bool isSignal(char c)
 {
   return c == '+' || c == '-';
