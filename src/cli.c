@@ -15,7 +15,6 @@ void cli(int argc, char const *argv[])
     char polynomial1[MAX_SIZE], polynomial2[MAX_SIZE];
     PolynomialTerm pt1[MAX_DEGREE], pt2[MAX_DEGREE];
     int option, x;
-    bool exit = false;
 
     do
     {
