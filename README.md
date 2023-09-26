@@ -45,7 +45,10 @@
 - Vetores
 - Manipulação, formatação e mascaras de string
 - Ponteiros
+- `#define` guards
 - Struct
+
+> **Decisões técnicas de implementação**: clique [AQUI](./docs/technical-decision.md)
 
 ## 🚀 Execução do projeto
 

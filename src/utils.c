@@ -1,4 +1,9 @@
-#include "utils.h"
+#include "../include/utils.h"
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 void removeSpaces(char *str)
 {

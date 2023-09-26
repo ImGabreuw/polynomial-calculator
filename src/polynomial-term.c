@@ -1,4 +1,8 @@
-#include "polynomial-term.h"
+#include "../include/polynomial-term.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 int solveOne(PolynomialTerm *pt, int x)
 {

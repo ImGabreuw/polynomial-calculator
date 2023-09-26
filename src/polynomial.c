@@ -1,6 +1,12 @@
-#include "polynomial-term.h"
-#include "polynomial.h"
-#include "utils.h"
+#include "../include/polynomial.h"
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+
+#include "../include/polynomial-term.h"
+#include "../include/utils.h"
 
 int getHighestDegree(const char polynomial[])
 {

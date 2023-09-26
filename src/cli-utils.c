@@ -1,5 +1,10 @@
-#include "utils.h"
-#include "cli-utils.h"
+#include "../include/cli-utils.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../include/utils.h"
 
 void menu()
 {
@@ -22,7 +27,7 @@ int inputInt(const char message[])
   }
 
   fgets(raw, 10 * sizeof(char), stdin);
-  return atoi(raw);  
+  return atoi(raw);
 }
 
 void inputPolynomial(char *polynomial, int length, const char message[])

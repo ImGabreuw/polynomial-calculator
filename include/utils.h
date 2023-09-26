@@ -1,8 +1,6 @@
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
+#ifndef POLYNOMIAL_CALCULATOR_INCLUDE_UTILS_H_
+#define POLYNOMIAL_CALCULATOR_INCLUDE_UTILS_H_
+
 #include <stdbool.h>
 
 #include "polynomial-term.h"
@@ -23,3 +21,5 @@ void init(PolynomialTerm polynomial[], int size);
 bool isSignal(char c);
 
 bool isNumber(const char str[]);
+
+#endif // POLYNOMIAL_CALCULATOR_INCLUDE_UTILS_H_

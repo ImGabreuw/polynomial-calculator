@@ -1,9 +1,6 @@
-#ifndef POLYNOMIAL_H
-#define POLYNOMIAL_H
+#ifndef POLYNOMIAL_CALCULATOR_INCLUDE_POLYNOMIAL_H_
+#define POLYNOMIAL_CALCULATOR_INCLUDE_POLYNOMIAL_H_
 
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
 #include "polynomial-term.h"
 
 #define MAX_SIZE 100
@@ -27,4 +24,4 @@ char *format(PolynomialTerm pt[]);
 
 void print(PolynomialTerm pt[]);
 
-#endif // POLYNOMIAL_H
+#endif // POLYNOMIAL_CALCULATOR_INCLUDE_POLYNOMIAL_H_

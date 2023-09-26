@@ -19,6 +19,7 @@
     "system_error": "c",
     "cli-utils.h": "c",
     "stdlib.h": "c",
-    "numeric": "c"
+    "numeric": "c",
+    "math.h": "c"
   }
 }

@@ -1,4 +1,13 @@
-#include "cli.h"
+#include "../include/cli.h"
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#include "../include/cli-utils.h"
+#include "../include/polynomial.h"
+#include "../include/utils.h"
 
 void cli(int argc, char const *argv[])
 {

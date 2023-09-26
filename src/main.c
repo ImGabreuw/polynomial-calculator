@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "cli.h"
+#include "../include/cli.h"
 
 int main(int argc, char const *argv[])
 {

@@ -1,9 +1,5 @@
-#ifndef POLYNOMIAL_TERM_H
-#define POLYNOMIAL_TERM_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+#ifndef POLYNOMIAL_CALCULATOR_INCLUDE_POLYNOMIAL_TERM_H_
+#define POLYNOMIAL_CALCULATOR_INCLUDE_POLYNOMIAL_TERM_H_
 
 typedef struct
 {
@@ -21,4 +17,4 @@ PolynomialTerm multiplyOne(PolynomialTerm *pt, PolynomialTerm *other);
 
 void printOne(PolynomialTerm *pt);
 
-#endif // POLYNOMIAL_TERM_H
+#endif // POLYNOMIAL_CALCULATOR_INCLUDE_POLYNOMIAL_TERM_H_
