@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-int solveOne(PolynomialTerm *pt, int x)
+int solveOne(const PolynomialTerm *pt, int x)
 {
     if (pt->coefficient == 0)
     {
@@ -40,37 +40,37 @@ PolynomialTerm multiplyOne(PolynomialTerm *pt, PolynomialTerm *other)
     return term;
 }
 
-void printOne(PolynomialTerm *pt)
+void printOne(const PolynomialTerm *pt)
 {
-    if (pt->power == 0)
+    if (pt->coefficient >= 0)
     {
-        if (pt->coefficient >= 0)
+        if (pt->power == 0)
         {
             printf(" + %d", pt->coefficient);
             return;
         }
+        
+        if (pt->power == 1)
+        {
+            printf(" + %dx", pt->coefficient);
+            return;
+        }
 
+        printf(" + %dx^%d", pt->coefficient, pt->power);
+        return;
+    }
+
+    if (pt->power == 0)
+    {
         printf(" - %d", abs(pt->coefficient));
         return;
     }
 
     if (pt->power == 1)
     {
-        if (pt->coefficient >= 0)
-        {
-            printf(" + %dx", pt->coefficient);
-            return;
-        }
-
         printf(" - %dx", abs(pt->coefficient));
         return;
     }
-
-    if (pt->coefficient >= 0)
-    {
-        printf(" + %dx^%d", pt->coefficient, pt->power);
-        return;
-    }
-
+    
     printf(" - %dx^%d", abs(pt->coefficient), pt->power);
 }

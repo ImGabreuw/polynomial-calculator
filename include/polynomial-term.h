@@ -7,7 +7,7 @@ typedef struct
     int power;
 } PolynomialTerm;
 
-int solveOne(PolynomialTerm *pt, int x);
+int solveOne(const PolynomialTerm *pt, int x);
 
 void sumOne(PolynomialTerm *pt, PolynomialTerm *other);
 
@@ -15,6 +15,6 @@ void subtractOne(PolynomialTerm *pt, PolynomialTerm *other);
 
 PolynomialTerm multiplyOne(PolynomialTerm *pt, PolynomialTerm *other);
 
-void printOne(PolynomialTerm *pt);
+void printOne(const PolynomialTerm *pt);
 
 #endif // POLYNOMIAL_CALCULATOR_INCLUDE_POLYNOMIAL_TERM_H_
